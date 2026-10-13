@@ -10,7 +10,44 @@
 
 这里介绍我作为第一作者参与完成的三个合作研究项目，主题是图的色对称函数与 $e$-正性。每个项目页面说明研究问题、主要结果、证明思路，以及计算验证在研究中的作用。
 
-**本仓库公开项目介绍。三个项目的实现代码保存在各自的私有仓库，本仓库不提供源代码、可执行程序、原始证书数据或未公开的论文全文。**
+**本仓库公开中英双语项目介绍和可运行的色对称函数基础模块。三个论文项目的完整验证程序、专属匹配构造、原始证书和未公开全文仍保存在私有项目中。**
+
+### 可运行的基础模块
+
+`csf_basics` 将常用图结构、组合序列和精确多项式运算组织为可复用的 Python 函数。代码对应已有基础公式，并附来源；这些通用公式不作为本人的新定理。
+
+| 模块 | 公开内容 |
+|---|---|
+| [组合序列](csf_basics/compositions.py) | 枚举 $I\vDash n$、计算 $w_I=i_1\prod_{j\geq2}(i_j-1)$ 和 $\Theta_I(a)$ |
+| [基础公式](csf_basics/formulas.py) | $X_{P_n}$、$X_{C_n}$、$X_{S(a,b,c)}$、$X_{K_n}$；生成单个或整族 $w_Ie_I$ |
+| [对称函数运算](csf_basics/symmetric.py) | 精确加法、乘法、合并同类项、$p\to e$ 换基、代入与系数符号检查 |
+| [图结构与独立计算](csf_basics/graphs.py) | 路径、圈、任意至少三臂蜘蛛图、完全图；用边子集公式独立计算 CSF |
+| [范围验证](csf_basics/verification.py) | 按用户指定的图阶范围核对基础公式，报告实际覆盖数量 |
+
+在仓库根目录运行，Python 3.10+，无需第三方运行依赖：
+
+```bash
+python -m csf_basics path 4
+python -m csf_basics cycle 4
+python -m csf_basics spider 6 2 1
+python -m csf_basics terms 3 --include-zero
+python -m csf_basics verify --min-order 0 --max-order 10
+python -m unittest discover -s tests -v
+```
+
+```python
+from csf_basics import path_csf, weighted_e_term, format_e
+
+print(format_e(path_csf(4)))
+# 4*e[4] + 2*e[3]*e[1] + 2*e[2]*e[2]
+term = weighted_e_term((2, 3))
+print(term.composition, term.coefficient, term.e_index)
+# (2, 3) 4 (3, 2): ordered I is retained before collecting e monomials
+```
+
+[公式、来源与约定](docs/formulas.md) · [API 与使用方法](docs/usage.md) · [验证记录](docs/validation.md) · [Python 示例](examples/basic_usage.py) · [可选 SageMath 对照](examples/sage_check.py)
+
+$P_n,C_n$ 的 $n$ 是顶点数；$S(a,b,c)$ 的腿长是边数，图阶为 $a+b+c+1$。三臂蜘蛛公式会先排序腿长，多臂情况可调用通用图计算。快速公式接口没有预设参数上界，但输出规模仍受计算资源限制。独立边子集核对需要指数时间，默认边数预算为 18，可显式提高；超预算会报错，不会静默缩小范围。
 
 ### 项目导航
 
@@ -37,13 +74,30 @@ Spider 和 Kayak 的验证程序曾于 **2026-10-12** 通过 Windows、Linux 上
 - 项目介绍：公开，可从上表进入中英双语说明。
 - Spider / Kayak 论文：项目页面提供公开 arXiv 链接及版本说明。
 - Caterpillar 论文：已完成；本仓库提供研究概述，不附论文全文。
-- 三个实现仓库：保持私有。这个介绍仓库不提供可直接运行的复现包。
+- 通用基础计算：本仓库公开提供，可直接运行并指定范围检查。
+- 三个论文实现仓库：保持私有；这里的基础模块不等同于论文逐定理验证程序或完整复现包。
 
 ## English overview
 
 This portfolio presents three collaborative research projects in which I am the first author. They study chromatic symmetric functions and $e$-positivity through combinatorial constructions, explicit expansions, and exact certificates.
 
-**This is a public documentation repository. The implementations are maintained in three separate private repositories. Source code, executable programs, raw certificate data, and unpublished manuscript files are not distributed here.**
+**This repository publishes bilingual project overviews and executable basic CSF modules. Complete paper-specific verifiers, specialized matching constructions, raw certificates, and unpublished manuscripts remain in the private projects.**
+
+### Executable basic modules
+
+The `csf_basics` Python package provides reusable graph constructions, ordered compositions, and exact symmetric-function operations. The formulas are established results with references, not new theorems claimed by this portfolio.
+
+| Module | Public functionality |
+|---|---|
+| [Compositions](csf_basics/compositions.py) | Enumerate $I\vDash n$, compute $w_I$ and the prefix surplus $\Theta_I(a)$ |
+| [Formulas](csf_basics/formulas.py) | Paths, simple cycles, three-legged spiders, complete graphs, and ordered $w_Ie_I$ terms |
+| [Symmetric functions](csf_basics/symmetric.py) | Exact arithmetic, collection, $p$-to-$e$ conversion, specialization, coefficient signs |
+| [Graphs](csf_basics/graphs.py) | Graph constructors and an independent edge-subset CSF calculation |
+| [Verification](csf_basics/verification.py) | Exhaustive basic-formula checks within a user-selected finite graph-order interval |
+
+The commands and Python example above run from the repository root with Python 3.10+ and no third-party runtime dependencies. See the bilingual [formula reference](docs/formulas.md), [usage guide](docs/usage.md), and [validation record](docs/validation.md). An [optional SageMath example](examples/sage_check.py) demonstrates conversion and external comparison.
+
+For $P_n,C_n$, $n$ counts vertices. Spider legs count edges, so $S(a,b,c)$ has $a+b+c+1$ vertices. The fast spider formula accepts three legs in any order; spiders with more legs use the generic graph algorithm. Fast formulas have no preset parameter cap, but remain resource-limited. Independent subset verification takes exponential time: its default edge budget is 18, can be raised explicitly, and never silently truncates the requested range.
 
 ### Projects
 
@@ -69,4 +123,4 @@ The project pages provide paper references, proof outlines, and validation scope
 
 ---
 
-Last updated / 更新日期：2026-10-12
+Last updated / 更新日期：2026-10-13

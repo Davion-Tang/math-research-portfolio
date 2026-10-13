@@ -6,6 +6,8 @@
 Davion Q.B. Tang, David G.L. Wang  
 [论文版本 / Paper version: arXiv:2408.01385v3](https://arxiv.org/abs/2408.01385v3), 2026-08-06
 
+公开基础工具 / Public basic tools：[路径、圈、$w_Ie_I$ 与精确多项式运算](../docs/formulas.md)。本文统一公式的专属实现与逐定理验证器继续保存在私有项目中。The specialized implementations of the paper's uniform formulas and theorem verifiers remain in the private project.
+
 ## 中文
 
 ### 研究目标
@@ -32,7 +34,7 @@ Twinning 指加入一个与原顶点相邻的新顶点，并使它具有原顶�
 
 ### 主要结果与研究角色
 
-项目给出 KPKP、twinned paths、twinned cycles、twinned lollipops、kayak paddles 及 infinity graphs 的相关正展开。本人为第一作者，参与统一公式推导、特殊情形与边界核查、计算验证及论文写作；结果为与 David G.L. Wang 的合作成果。
+项目给出 KPKP、twinned paths、twinned cycles、twinned lollipops、kayak paddles 及 infinity graphs 的相关正展开。本人为第一作者，承担统一公式及推广情形的主要数学推导与全部程序验证，并参与论文写作。使用 SageMath/Python 生成有限范围的样例，将常用多项式、图结构与参数代入组织为可复用函数，并核查边界和已知特例；结果为与 David G.L. Wang 的合作成果。
 
 ### 计算验证范围
 
@@ -70,7 +72,7 @@ Twinning adds a new vertex adjacent to the original vertex and to all of its nei
 
 ### Outcome and role
 
-The results cover KPKP graphs, twinned paths and cycles, twinned lollipops, kayak paddles, and infinity graphs. As first author, I contributed to formula derivation, specialization and boundary analysis, computational verification, and writing. The results are joint work with David G.L. Wang.
+The results cover KPKP graphs, twinned paths and cycles, twinned lollipops, kayak paddles, and infinity graphs. As first author, I was responsible for the main derivations of the uniform formula and its extensions, and all computational verification, and contributed to writing. SageMath/Python experiments, reusable polynomial and graph functions, parameter substitutions, and boundary checks supported this work. The results are joint work with David G.L. Wang.
 
 ### Computational scope
 

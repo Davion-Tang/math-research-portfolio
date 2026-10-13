@@ -6,6 +6,10 @@
 Davion Q.B. Tang, David G.L. Wang, Monica M.Y. Wang  
 [公开论文 / Public paper: arXiv:2405.04915](https://arxiv.org/abs/2405.04915)
 
+期刊进度 / Journal status：初审已通过（作者提供，2026-10-13） · Initial review passed (author-reported, 13 October 2026).
+
+公开基础工具 / Public basic tools：[路径与三臂蜘蛛 CSF、组合权重](../docs/formulas.md)。这些基础函数不包含本文的专属单射或逐结论验证器。These utilities do not include this paper's specialized injections or theorem-by-theorem verifiers.
+
 ## 中文
 
 ### 研究目标
@@ -26,7 +30,7 @@ Spider 是若干条路径共用一个中心顶点形成的树。本项目研究�
 
 ### 主要结果与研究角色
 
-核心结果是对全部整数 $m\geq1$ 成立的正性定理。显式单射构造是论文的主要贡献之一。本人为第一作者，参与规则设计、证明推导、实例核查及论文写作；结果为上述三位作者的合作成果。
+核心结果是对全部整数 $m\geq1$ 成立的正性定理。显式单射构造是论文的主要贡献之一。本人为第一作者，负责主要证明构造及全部 SageMath/Python 计算验证，并参与论文写作。研究中将常用多项式计算、序列处理与匹配检查组织为函数模块，按核验反馈回查数学推导；结果为上述三位作者的合作成果。
 
 ### 计算验证范围
 
@@ -36,7 +40,7 @@ Spider 是若干条路径共用一个中心顶点形成的树。本项目研究�
 
 ### 版本与访问说明
 
-公开 arXiv 页面目前列出 v3（2025-08-30）。内部验证对应作者随后提供的 22 页修订稿，不能把该修订稿的结果编号、页码直接视为公开 arXiv v3 的编号、页码。本页只介绍方法与结果；实现代码和修订稿文件不在本仓库发布。
+公开 arXiv 页面目前列出 v3（2025-08-30）。内部验证对应作者随后提供的 22 页修订稿，不能把该修订稿的结果编号、页码直接视为公开 arXiv v3 的编号、页码。本仓库另有通用基础模块；论文专属实现代码和修订稿文件不在本仓库发布。
 
 ## English
 
@@ -58,7 +62,7 @@ A composition-indexed expansion contains both positive and negative contribution
 
 ### Outcome and role
 
-The main result holds for every integer $m\geq1$. Explicit injection constructions are a central contribution. I am the first author and contributed to rule design, mathematical derivation, computational checking, and writing. The paper is joint work with the coauthors listed above.
+The main result holds for every integer $m\geq1$. Explicit injection constructions are a central contribution. As first author, I was responsible for the main proof constructions and all SageMath/Python computational verification, and contributed to writing. Common polynomial operations, sequence processing, and matching checks were organized into reusable functions, with computational feedback used to revisit derivations. The paper is joint work with the coauthors listed above.
 
 ### Computational scope
 
@@ -68,4 +72,4 @@ Recorded checks cover all eight results for $m=1,2,3$, with the four injection c
 
 ### Version and availability
 
-The public arXiv record currently lists v3, dated 30 August 2025. Internal verification instead follows a subsequently supplied 22-page author revision. Its numbering and pagination should not be assumed to match the public version. Neither the implementation nor that revised manuscript file is distributed in this portfolio.
+The public arXiv record currently lists v3, dated 30 August 2025. Internal verification instead follows a subsequently supplied 22-page author revision. Its numbering and pagination should not be assumed to match the public version. General basic modules are provided separately; neither the paper-specific implementation nor that revised manuscript file is distributed in this portfolio.

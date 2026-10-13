@@ -6,6 +6,8 @@
 Davion Q.B. Tang, David G.L. Wang, Monica M.Y. Wang  
 状态 / Status：论文已完成 · Manuscript completed
 
+公开基础工具 / Public basic tools：[精确对称函数运算、图计算与组合序列](../docs/usage.md)。下文的状态转移矩阵、不变锥和证书检查仍属于私有论文实现。The state-transfer matrices, invariant cones, and certificate checks below remain part of the private paper implementation.
+
 ## 中文
 
 ### 研究目标
@@ -41,11 +43,11 @@ Davion Q.B. Tang, David G.L. Wang, Monica M.Y. Wang
 
 ### 合作与 AI 辅助研究
 
-本人为第一作者。作者团队发起研究，根据实验规律确定方向，独立推导奇偶约束，并指导非相邻与相邻情形的划分及证明简化。研究使用大模型辅助探索代入映射、不变锥、证书与候选论证；作者审查模型输出、定位定义和论证中的缺口、指导修订，并独立核验论文中的结果。AI 辅助的范围在论文中披露，结果由作者负责。
+本人为第一作者，承担主要数学推导与全部 SageMath/Python 程序验证；先计算小规模实例、观察规律并独立推导关键奇偶约束，再按关键节点是否相邻拆分问题。与 GPT 协同探索时，由本人设定数学约束、提出简化方向，模型辅助搜索矩阵递推、不变锥证书与候选论证；本人逐条审查、纠错并与合作者核对数学论证。常用多项式、状态转移和证书检查封装为 Python 函数，以精确有理数运算复核。AI 辅助的范围在论文中披露，合作成果由作者负责。
 
 ### 访问说明
 
-论文已完成。本仓库提供经过整理的目标、方法与成果概述，不附未公开全文，也不提供实现代码或原始证书。代码继续保存在私有仓库。
+论文已完成。本仓库提供经过整理的目标、方法与成果概述及通用基础模块；论文专属实现代码、未公开全文和原始证书继续保存在私有项目中。
 
 ## English
 
@@ -82,8 +84,8 @@ The adjacent-case certificate checks five seed conditions, seventeen allowed tra
 
 ### Collaboration and AI assistance
 
-I am the first author. The authors initiated the investigation, identified directions from computational patterns, independently derived parity restrictions, and guided the division and simplification of the proof. Large language models assisted in exploring specializations, invariant cones, certificates, and candidate arguments. The authors reviewed the outputs, identified gaps, directed revisions, and independently checked the paper's results. The manuscript discloses this assistance, and the authors take responsibility for its contents.
+As first author, I was responsible for the main mathematical derivations and all SageMath/Python computational verification. I investigated small cases, independently derived the key parity restrictions, and split the problem by adjacency. In collaboration with GPT, I set mathematical constraints and proposed simplifications; the model assisted in exploring matrix recurrences, invariant-cone certificates, and candidate arguments. I reviewed and corrected the outputs and checked the reasoning with my coauthors. Common polynomial operations, state transfers, and certificate checks were organized as Python functions using exact rational arithmetic. The manuscript discloses this assistance, and the authors take responsibility for the joint results.
 
 ### Availability
 
-The manuscript is complete. This portfolio publishes a research overview, not the unpublished full text, implementation code, or raw certificates. The implementation repository remains private.
+The manuscript is complete. This portfolio publishes a research overview and general basic modules. The unpublished full text, paper-specific implementation code, and raw certificates remain in the private project.
